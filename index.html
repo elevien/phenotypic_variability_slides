@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="./dist/reveal.css">
+		<link rel="stylesheet" href="./dist/theme/eal.css" id="theme">
+	</head>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/d3-timer.v1.min.js"></script>
+	<script src="https://d3js.org/d3-random.v1.min.js"></script>
+	<script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<style type="text/css">
+    code {
+      white-space: pre;
+    }
+
+    .MathJax_CHTML {
+			color:rgb(100, 100, 100);
+      font-size: 100% !important;
+    }
+		.container{
+		display: flex;
+		}
+		.col{
+		flex: 1;
+		}
+
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+  </style>
+
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<!-- ########################################################## -->
+				<section>
+					<h2>Title</h2>
+					 <img src="./figures/euler.png" height="400">
+					<h3>Ethan Levien</h3>
+
+				</section>
+
+        <section>
+				<h2> Some math </h2>
+				<p> We can use <a href = "https://www.mathjax.org/"> mathjax</a> to embed equations:  </p>
+
+					\[\begin{aligned}
+									N_{k+1} = \left\{ \begin{array}{lr}
+									 2 q N_k + (1-q) N_k & \text{if we win}\\
+									 (1-q) N_k & \text{if we lose}
+									\end{array} \right.
+									\end{aligned}
+						\]
+					</br>
+					<div class="fragment">
+						<h4> Yay!  </h4></div>
+          </section>
+
+  <section>
+    <h2> Animations too! </h2>
+      <p> It's easy to embed <a href= "https://d3js.org/">d3.js </a> animations using <a href = "https://observablehq.com/"> observable notebooks </a>.
+     <div class="fragment">
+    	<div class="viewof-a"></div>
+  	<div class="win_chart" class="horizontal-center"></div>
+
+    	<script type="module">
+    	import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+    	import define from "https://api.observablehq.com/@elevien/kelly.js?v=3";
+    	(new Runtime).module(define, name => {
+    		if (name === "viewof a") return Inspector.into(".viewof-a")();
+    		if (name === "win_chart") return Inspector.into(".win_chart")();
+    		return ["data1"].includes(name) || null;
+    	});
+    	</script></div>
+
+    </section>
+
+
+			</div>
+
+		</div>
+
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/math/math.js"></script>
+		<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+		<script>
+			Reveal.initialize({
+				center: true,
+				history: true,
+				transition: 'none',
+
+				math: {
+					// mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full',
+					TeX: {
+						Macros: {
+							R: '\\mathbb{R}',
+							set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+						}
+					}
+				},
+
+				plugins: [ RevealMath ]
+			});
+
+		</script>
+
+
+
+	</body>
+</html>
